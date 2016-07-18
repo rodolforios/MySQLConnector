@@ -1,1 +1,1 @@
-module.exports = './src/MySQL'
+module.exports = require './src/MySQL'
