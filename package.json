@@ -1,0 +1,48 @@
+{
+  "name": "mysql-connector",
+  "version": "0.1.0",
+  "description": "S2way - MySQL Connector",
+  "main": "main.coffee",
+  "scripts": {
+    "pretest": "node_modules/.bin/coffeelint -f coffeelint.json src",
+    "test": "node_modules/.bin/mocha test --recursive -R progress --compilers coffee:coffee-script/register"
+  },
+  "config": {
+    "blanket": {
+      "pattern": "./",
+      "loader": "./node-loaders/coffee-script.js"
+    },
+    "mocha-cov-reporter": {
+      "failOnError": true,
+      "threshold": 90,
+      "useColors": true
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/s2way/MySQLConnector"
+  },
+  "author": "Newborns - S2Way",
+  "bugs": {
+    "url": "https://github.com/s2way/MySQLConnector/issues"
+  },
+  "dependencies": {
+    "exceptions": "git://github.com/s2way/Exception.git",
+    "lodash": "^4.13.1",
+    "moment": "^2.10.3",
+    "mysql2": "^1.0.0-rc.7",
+    "node-uuid": "^1.4.3",
+    "rules": "git://github.com/s2way/Rules.git"
+  },
+  "devDependencies": {
+    "blanket": "git://github.com/alex-seville/blanket.git",
+    "coffee-script": "latest",
+    "coffeelint": "^1.9.4",
+    "expect.js": "^0.3.1",
+    "mocha": "^2.2.4"
+  },
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 1.0.0"
+  }
+}
