@@ -260,7 +260,7 @@ class MySQLConnector
             callback null, success
 
     close: ->
-        @pool.close()
+        @pool.end()
 
     # createMany
     # readMany
