@@ -259,6 +259,9 @@ class MySQLConnector
             return callback error if error?
             callback null, success
 
+    close: ->
+        @pool.close()
+
     # createMany
     # readMany
     # update
