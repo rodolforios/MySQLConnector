@@ -17,12 +17,12 @@ class MySQLConnector
 
     instance = null
 
-    constructor: (params, container) ->
-        return instance if instance?
-        @init params, container
-        instance = @
+    # constructor: (params, container) ->
+    #     return instance if instance?
+    #     @init params, container
+    #     instance = @
 
-    init: (params, container) ->
+    constructor: (params, container) ->
 
         @rules = container?.Rules || rules
         @Exceptions = container?.Exceptions || exceptions
