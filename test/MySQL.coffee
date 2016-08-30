@@ -806,6 +806,57 @@ describe 'the MySQLConnector,', ->
                 expect(row).to.be.eql expectedRow
                 done()
 
+    describe 'when executing a simple query without values', ->
+
+        it 'should validate _execute params', (done) ->
+
+            expectedQuery = "SELECT * FROM table1"
+            expectedParams = []
+
+            connector = new MySQLConnector params
+            connector._execute = (query, params, callback)->
+                expect(query).to.eql expectedQuery
+                expect(params).to.eql expectedParams
+                done()
+
+            connector.query expectedQuery, ->
+
+        it 'should return an error if was a executing query problem', (done) ->
+
+            expectedError = 'Internal Error'
+
+            connector = new MySQLConnector params
+            connector._execute = (query, params, callback) ->
+                callback expectedError
+            connector.query "", (error, success) ->
+                expect(error).to.eql expectedError
+                expect(success).not.to.be.ok()
+                done()
+
+        it 'should return a query results if everything is ok', (done) ->
+
+            expectedResults = [
+                {id:1, name: 'Test'}
+            ]
+
+            connector = new MySQLConnector params
+            connector._execute = (query, params, callback) ->
+                callback null, expectedResults
+            connector.query "", (error, success) ->
+                expect(error).not.to.be.ok()
+                expect(success).to.eql expectedResults
+                done()
+
+        it 'should return a empty callback if no results found', (done) ->
+
+            connector = new MySQLConnector params
+            connector._execute = (query, params, callback) ->
+                callback()
+            connector.query "", (error, success) ->
+                expect(error).not.to.be.ok()
+                expect(success).not.to.be.ok()
+                done()
+
     describe 'when executing a query', ->
 
         it 'should return an error if was a get connection problem', (done) ->

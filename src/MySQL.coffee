@@ -157,6 +157,12 @@ class MySQLConnector
             return callback err if err?
             return callback null, row
 
+    query: (query, callback) ->
+        @_execute query, [], (err, row) =>
+            return callback err if err?
+            return callback null, row if @rules.isUseful(row)
+            return callback()
+
     _checkArg: (arg, name) ->
         if !@rules.isUseful arg
             throw new @Exceptions.Fatal @Exceptions.INVALID_ARGUMENT, "Parameter #{name} is invalid"
