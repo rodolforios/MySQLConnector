@@ -27,15 +27,15 @@
     "url": "https://github.com/s2way/MySQLConnector/issues"
   },
   "dependencies": {
-    "exceptions": "git://github.com/s2way/Exception.git",
+    "exceptions": "https://github.com/s2way/Exception.git",
     "lodash": "^4.13.1",
     "moment": "^2.10.3",
     "mysql2": "1.3.2",
     "node-uuid": "^1.4.3",
-    "rules": "git://github.com/s2way/Rules.git"
+    "rules": "https://github.com/s2way/Rules.git"
   },
   "devDependencies": {
-    "blanket": "git://github.com/alex-seville/blanket.git",
+    "blanket": "https://github.com/alex-seville/blanket.git",
     "coffee-script": "latest",
     "coffeelint": "^1.9.4",
     "expect.js": "^0.3.1",
